@@ -6,7 +6,7 @@ targets = $(objects:.md=.html) # target file (list)
 all: $(targets)
 
 %.html : %.md
-	pandoc -s --self-contained -f markdown -t html -c github_kn.css "$<" > "$@"
+	cd ./html && pandoc -s --self-contained -f markdown -t html -c ../github_kn.css "$(subst html/,,$<)" > "$(subst html/,,$@)"
 
 clean:
 	rm -f $(targets)
